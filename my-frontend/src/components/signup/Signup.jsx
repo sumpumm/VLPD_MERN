@@ -1,11 +1,39 @@
 import React from 'react';
-
 import user_icon from '../../assets/user.png';
 import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/padlock.png';
+import { useFormik } from "formik";
+import { signUpSchema } from '../../schemas';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+
+const initialValues={
+  email: "",
+  username:"",
+  password: "",
+  confirmpassword: ""
+};
 
 const Signup = () => {
+  const history= useNavigate();
+    const {values,errors,touched,handleBlur,handleChange,handleSubmit}= useFormik({
+        initialValues: initialValues,
+        validationSchema: signUpSchema,
+        onSubmit: async (values,action)=>{
+          await axios.post("http://localhost:1000/api/v1/register",values).then((response)=>{
+            if (response.data.message ==="User already exists"){
+              alert(response.data.message);
+            }else{
+              alert(response.data.message);
+              history("/signin");
+            }
+            
+          });
+            action.resetForm();
+        },
+    });
   return (
+
     <div className="w-screen h-screen flex items-center justify-center bg-blue-200">
       <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg">
         {/* Header */}
@@ -15,7 +43,7 @@ const Signup = () => {
         </div>
 
         {/* Form Start */}
-        <form  className="space-y-4">
+        <form  className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <div className="flex items-center gap-3 border border-gray-300 rounded px-3 py-2">
               <img src={user_icon} alt="User Icon" className="w-5 h-5" />
@@ -24,7 +52,10 @@ const Signup = () => {
                 name="username"
                 placeholder="Username"
                 className="w-full outline-none bg-transparent text-sm"
+                value={values.username} onChange={handleChange} onBlur={handleBlur}
+
               />
+              {errors.username && touched.username ? (<p className='error'>{errors.username}</p>):null}
             </div>
           </div> 
 
@@ -36,7 +67,9 @@ const Signup = () => {
                 name="email"
                 placeholder="Email Id"
                 className="w-full outline-none bg-transparent text-sm"
+                value={values.email} onChange={handleChange} onBlur={handleBlur}
               />
+              {errors.email && touched.email ? (<p className='error'>{errors.email}</p>):null}
             </div>
           </div>
 
@@ -48,7 +81,8 @@ const Signup = () => {
                 name="password"
                 placeholder="New Password"
                 className="w-full outline-none bg-transparent text-sm"
-              />
+                value={values.password} onChange={handleChange} onBlur={handleBlur}
+              />{errors.password && touched.password ? (<p className='error'>{errors.password}</p>):null}
             </div>
           </div>
 
@@ -60,16 +94,18 @@ const Signup = () => {
                 name="confirmpassword"
                 placeholder="Confirm Password"
                 className="w-full outline-none bg-transparent text-sm"
+                value={values.confirmpassword} onChange={handleChange} onBlur={handleBlur}
               />
+               {errors.confirmpassword && touched.confirmpassword ? (<p className='error'>{errors.confirmpassword}</p>):null}
             </div>
           </div>
 
           {/* Already have an account? */}
           <div className="text-sm text-right text-gray-600">
             Already have an account?
-            <a to="#" className="text-blue-600 hover:underline cursor-pointer">
+            <Link to="/signin" className="text-blue-600 hover:underline cursor-pointer">
               Login
-            </a>
+            </Link>
           </div>
 
           {/* Submit Button */}
