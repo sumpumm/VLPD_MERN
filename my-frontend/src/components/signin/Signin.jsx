@@ -1,5 +1,4 @@
 import React from 'react';
-import user_icon from '../../assets/user.png';
 import email_icon from '../../assets/email.png';
 import password_icon from '../../assets/padlock.png';
 import { Link } from 'react-router-dom';

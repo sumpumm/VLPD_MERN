@@ -19,16 +19,16 @@ router.post("/login",async(req,res)=>{
     try {
         const user = await User.findOne({email: req.body.email});
         if(!user){
-            res.status(200).json({message : "Please Sign Up first"});  
+            return res.status(200).json({message : "Please Sign Up first"});  
         }
         const is_password=bcrypt.compareSync(req.body.password,user.password); 
         if(!is_password){
-            res.status(200).json({message : "Invalid password"});  
+            return res.status(200).json({message : "Invalid password"});  
         }  
         const {password, ...others}= user._doc; // user ko password bahek sab information mageko
-        res.status(200).json({others});
+        return res.status(200).json({others});
     } catch (error) {
-        res.status(200).json({message : "Error"});
+        return res.status(200).json({message : "Error"});
     }
 
 });
