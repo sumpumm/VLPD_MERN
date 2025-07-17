@@ -12,22 +12,22 @@ const isLoggedIn = useSelector((state)=>state.isLoggedIn);
   }
   return (
     <div>
-      <nav class="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
+      <nav className="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
 
-  <div class="text-2xl font-bold">Vehicle License Plate Detection System</div>
+  <div className="text-2xl font-bold">Vehicle License Plate Detection System</div>
 
   
-  <div class="hidden md:flex space-x-6">
-    <Link to="/" class="hover:text-gray-200">Home</Link>
+  <div className="hidden md:flex space-x-6">
+    <Link to="/" className="hover:text-gray-200">Home</Link>
     {!isLoggedIn && (
         <>
-        <Link to="/signin" class="hover:text-gray-200">Login</Link>
-        <Link to="/signup" class="hover:text-gray-200">SingUp</Link>
+        <Link to="/signin" className="hover:text-gray-200">Login</Link>
+        <Link to="/signup" className="hover:text-gray-200">SingUp</Link>
         </>
     )}
     {isLoggedIn && (
         <>
-        <Link onClick={logout} class="hover:text-gray-200">Logout</Link>
+        <Link onClick={logout} className="hover:text-gray-200">Logout</Link>
         </>
     )}
   </div>
