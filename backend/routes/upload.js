@@ -18,7 +18,7 @@ const upload = multer({storage : storage });
 router.post("/upload",upload.single('file'), async (req,res) =>{
     try {
       const filePath = `http://localhost:1000/uploads/${req.file.filename}`;
-      const response= await axios.post("http://127.0.0.1:8000/api/detect",{filePath: filePath});
+      const response= await axios.post("http://127.0.0.1:8000/api/detect",{filePath: filePath, fileName: req.file.filename });
       const plates = response.data.result;
       for (const plate of plates){
         const licensePlate = new LicensePlate({plateNumber : plate});

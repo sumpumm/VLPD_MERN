@@ -14,6 +14,7 @@ const Home = () => {
     try {
       const res = await axios.get("http://localhost:1000/api/v3/plates");
       setPlates(res.data); 
+     
     } catch (error) {
       console.error("Error fetching plates:", error);
     }
@@ -27,6 +28,7 @@ const Home = () => {
     try {
       const res = await axios.post("http://localhost:1000/api/v2/upload", formData);
       setFileName(res.data.file_name);
+     
       alert(res.data.message);
       await fetchPlates(); 
     } catch (error) {
@@ -54,7 +56,7 @@ const Home = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-gray-900 p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-900 p-4">
 
   {/* Upload and Video Player */}
   <div className="flex justify-center items-center gap-10 mb-8">
@@ -71,12 +73,24 @@ const Home = () => {
     </div>
     {/* Video Player */}
     <div>
-  <video controls className="w-96 rounded-lg shadow-lg bg-black">
-    {fileName && (
-      <source src={`http://localhost:1000/uploads/${fileName}`} type="video/mp4" />
-    )}
-    Your browser does not support the video tag.
-  </video>
+    <div className="relative w-[720px] h-[405px] mx-auto group transition-all duration-300">
+  <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 blur opacity-70 group-hover:opacity-100 transition duration-500 rounded-xl"></div>
+
+  <div className="relative rounded-xl overflow-hidden shadow-2xl bg-black ring-1 ring-white/10 backdrop-blur-sm w-full h-full">
+    <video
+      controls
+      className="w-full h-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+    >
+      {fileName && (
+        <source src={`http://localhost:8000/tracks/${fileName}`} type="video/mp4" />
+      )}
+      
+      Your browser does not support the video tag.
+    </video>
+    
+  </div>
+</div>
+
 </div>
 
   </div>
