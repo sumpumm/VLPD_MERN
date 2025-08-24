@@ -5,6 +5,7 @@ import './App.css'
 import Signup from './components/signup/Signup'
 import Signin from './components/signin/Signin'
 import Home from './components/home/Home'
+import WebcamCap from './components/WebCam/webcam'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Nav from './components/nav/Nav'
 import { authActions } from './store/index';
@@ -31,7 +32,7 @@ function App() {
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/signup" element={<Signup/>}/>
           <Route exact path="/signin" element={<Signin/>}/>
-          <Route exact path="/webcam" element={<WebcamCap/>}/>
+          <Route exact path= "/webcam" element={<WebcamCap/>}/>
         </Routes>
       </Router>
      </div>
