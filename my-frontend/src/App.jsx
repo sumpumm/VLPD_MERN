@@ -14,12 +14,12 @@ import WebcamCap from './components/webcam/WebcamCap'
 function App() {
   const dispatch =useDispatch();
 
-  //useEffect(()=>{
-    //const id=sessionStorage.getItem("id");
-   //if(id){
-    //dispatch(authActions.login());
-   //}
-  //},[]);
+  useEffect(()=>{
+    const id=sessionStorage.getItem("id");
+   if(id){
+    dispatch(authActions.login());
+   }
+  },[]);
   
   
   return (
