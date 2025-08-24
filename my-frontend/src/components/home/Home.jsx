@@ -102,7 +102,6 @@ const Home = () => {
   Upload Video
 </label>
 <br />
-  {/* Table */}
   {isLoading ? (
   <p className="text-white">Processing video... please wait.</p>
 ) : plates.length > 0 ? (
@@ -138,7 +137,8 @@ const Home = () => {
   </div>
 </div>
 
-) : null}
+) : null}{/* Table */}
+  
 </div>
 
 

@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Nav from './components/nav/Nav'
 import { authActions } from './store/index';
 import { useDispatch } from 'react-redux';
+import WebcamCap from './components/webcam/WebcamCap'
 
 function App() {
   const dispatch =useDispatch();
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/signup" element={<Signup/>}/>
           <Route exact path="/signin" element={<Signin/>}/>
+          <Route exact path="/webcam" element={<WebcamCap/>}/>
         </Routes>
       </Router>
      </div>
