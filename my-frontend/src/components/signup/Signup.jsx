@@ -36,13 +36,13 @@ const Signup = () => {
 
     <div className="w-screen h-screen flex items-center justify-center bg-blue-200">
       <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg">
-        {/* Header */}
+       
         <div className="flex flex-col items-center gap-2 mb-6">
           <div className="text-2xl font-bold text-gray-800">Sign Up</div>
           <div className="underline w-16 h-1 bg-blue-500 rounded"></div>
         </div>
 
-        {/* Form Start */}
+        
         <form  className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <div className="flex items-center gap-3 border border-gray-300 rounded px-3 py-2">
@@ -100,7 +100,7 @@ const Signup = () => {
             </div>
           </div>
 
-          {/* Already have an account? */}
+          
           <div className="text-sm text-right text-gray-600">
             Already have an account?
             <Link to="/signin" className="text-blue-600 hover:underline cursor-pointer">
@@ -108,7 +108,7 @@ const Signup = () => {
             </Link>
           </div>
 
-          {/* Submit Button */}
+          
           <div className="flex justify-center">
             <button
               type="submit"

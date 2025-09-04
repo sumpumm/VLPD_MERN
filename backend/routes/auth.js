@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 router.post("/register", async(req,res)=>{
     try {
-        const {email,username,password} = req.body; // destructuring bhanxa; basically extracts the specified properties from the request body and stores them in their own variables
+        const {email,username,password} = req.body; 
         const hashed_password = bcrypt.hashSync(password);
         const user = new User({email,username,password: hashed_password});
         await user.save().then(()=>{
@@ -25,7 +25,7 @@ router.post("/login",async(req,res)=>{
         if(!is_password){
             return res.status(200).json({message : "Invalid password"});  
         }  
-        const {password, ...others}= user._doc; // user ko password bahek sab information mageko
+        const {password, ...others}= user._doc; 
         return res.status(200).json({others});
     } catch (error) {
         return res.status(200).json({message : "Error"});

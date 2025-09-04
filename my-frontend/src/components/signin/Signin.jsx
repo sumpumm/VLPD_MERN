@@ -45,13 +45,13 @@ const Signin = () => {
     <form onSubmit={handleSubmit}>
         <div className="w-screen h-screen flex items-center justify-center bg-blue-200">
       <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg">
-        {/* Header */}
+        
         <div className="flex flex-col items-center gap-2 mb-6">
           <div className="text-2xl font-bold text-gray-800">Login</div>
           <div className="underline w-16 h-1 bg-blue-500 rounded"></div>
         </div>
 
-        {/* Inputs */}
+        
         <div className="space-y-4">
           
           <div className="flex items-center gap-3 border border-gray-300 rounded px-3 py-2">
@@ -80,16 +80,16 @@ const Signin = () => {
 
 
 
-        {/* Submit Buttons */}
+        
         <div className="flex justify-between mt-10">
-          {/* Navigate to Signup */}
+          
           <Link to="/signup">
             <div className="bg-blue-600 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition">
               Sign Up
             </div>
           </Link>
 
-          {/* Static Login Button (can be changed to a form submit later) */}
+          
           <button
               type="submit"
               className="bg-blue-600 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition"
